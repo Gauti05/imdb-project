@@ -4,7 +4,9 @@ import axios from "axios"
 export const fetchMovies = createAsyncThunk(
    'movies/fetchMovies',
    async(pageNumber)=>{
-       const res =  await fetch(`${import.meta.env.VITE_REACT_APP_MOVIES_BACKEND_URL}${pageNumber}`)
+       const res =  await fetch(
+         `${import.meta.env.VITE_REACT_APP_MOVIES_BACKEND_URL}${pageNumber}`
+       );
      if(!res.ok){
        throw new Error("failed to fetch movies")
      }
