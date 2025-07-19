@@ -4,7 +4,7 @@ import axios from "axios"
 import MovieCard from "../MovieCard/MovieCard"
 import Pagination from "../Pagination/Pagination"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchMovies } from "../../redux/Slice/movieSlice"
+import { fetchMovies, previousPage, nextPage } from "../../redux/Slice/movieSlice"
 
 function Movies(props){
     // const[movies,setMovies] = useState([])
@@ -35,15 +35,15 @@ useEffect(()=>{
 dispatch(fetchMovies(pageNumber))
 },[dispatch,pageNumber])
 
-    const previouspageFn = function(){
-        if(pageNumber>1){
-           dispatch(previouspageFn())
+    const previouspageFn = () => {
+        if (pageNumber > 1) {
+            dispatch(previousPage()); // Dispatch the previousPage action
         }
-        }
-        
-        const nextpagefn = function(){
-       dispatch(nextpagefn())
-        }
+    };
+
+    const nextpagefn = () => {
+        dispatch(nextPage()); // Dispatch the nextPage action
+    };
 
 
   
@@ -67,3 +67,8 @@ return <div>
 }  
 
 export default Movies
+
+
+
+
+
